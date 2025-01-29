@@ -12,10 +12,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RegistrationModule {
 
-
     @Provides
     @Singleton
     fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository{
         return userRepositoryImpl
     }
+
 }
