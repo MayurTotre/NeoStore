@@ -9,6 +9,39 @@
     android:background="#F5F5F5"
     tools:context=".presentation.view.LoginFragment">
 
+    <TextView
+        android:id="@+id/Neo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neo"
+        android:textColor="#FFEA00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cvLogin"
+        app:layout_constraintEnd_toStartOf="@id/tvStore"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/tvStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STORE"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:shadowColor="#99000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="5"
+        android:letterSpacing="0.15"
+        app:layout_constraintStart_toEndOf="@id/Neo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cvLogin"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvLogin"
         android:layout_width="0dp"
@@ -72,5 +105,24 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/haveAcc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DON'T HAVE AN ACCOUNT?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        android:layout_marginBottom="30sp"
+        />
+    
+    <ImageView
+        android:id="@+id/addAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
