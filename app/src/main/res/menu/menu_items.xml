@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/myCart"
+        android:title="My Cart"/>
+
+    <item
+        android:id="@+id/tables"
+        android:title="Tables"/>
+
+    <item
+        android:id="@+id/sofas"
+        android:title="Sofas"/>
+
+    <item
+        android:id="@+id/chair"
+        android:title="Chair"/>
+
+    <item
+        android:id="@+id/cupBoard"
+        android:title="CupBoard"/>
+
+    <item
+        android:id="@+id/myAccount"
+        android:title="My Account"/>
+
+    <item
+        android:id="@+id/storeLocator"
+        android:title="Store Locator"/>
+
+    <item
+        android:id="@+id/myOrders"
+        android:title="My Orders"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"/>
+
+</menu>

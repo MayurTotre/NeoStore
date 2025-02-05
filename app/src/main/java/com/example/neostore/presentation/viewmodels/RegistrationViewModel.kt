@@ -12,6 +12,7 @@ import com.example.neostore.domain.model.LoginRequest
 import com.example.neostore.domain.model.LoginResponse
 import com.example.neostore.domain.model.RegistrationRequest
 import com.example.neostore.domain.model.RegistrationResponse
+import com.example.neostore.domain.model.UserDataResponse
 import com.example.neostore.domain.repository.UserRepository
 import com.example.neostore.domain.usecase.RegisterUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -65,7 +66,26 @@ class RegistrationViewModel @Inject constructor(
                 }
         }
 
+    }
 
+    private val _userData = MutableLiveData<Result<UserDataResponse>>()
+    val getUserData: LiveData<Result<UserDataResponse>> = _userData
+
+    fun getUserData(access_token: String) {
+        viewModelScope.launch {
+            registerUserUseCase.getUserData(access_token)
+                .onStart {
+                    Log.d("User Data", "Started API Call")
+                }
+                .catch { exception ->
+                    Log.d("User Data", "Error: ${exception.message}")
+                    _userData.postValue(Result.failure(exception))
+                }
+                .collect { response ->
+                    Log.d("User Data", "Error: ${response.toString()}")
+                    _userData.postValue(Result.success(response))
+                }
+        }
     }
 
 }

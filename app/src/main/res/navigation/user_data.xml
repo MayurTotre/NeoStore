@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_data"
+    app:startDestination="@id/userDataFragment">
+    <fragment
+        android:id="@+id/userDataFragment"
+        android:name="com.example.neostore.presentation.view.UserDataFragment"
+        android:label="fragment_user_data"
+        tools:layout="@layout/fragment_user_data" >
+        <action
+            android:id="@+id/action_userDataFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
+        <action
+            android:id="@+id/action_userDataFragment_to_productsListFragment2"
+            app:destination="@id/productsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsListFragment"
+        android:name="com.example.neostore.ProductsListFragment"
+        android:label="fragment_products_list"
+        tools:layout="@layout/fragment_products_list" >
+        <action
+            android:id="@+id/action_productsListFragment_to_singleProductFragment"
+            app:destination="@id/singleProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleProductFragment"
+        android:name="com.example.neostore.SingleProductFragment"
+        android:label="fragment_single_product"
+        tools:layout="@layout/fragment_single_product" />
+</navigation>

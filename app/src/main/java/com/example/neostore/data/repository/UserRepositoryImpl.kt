@@ -5,6 +5,7 @@ import com.example.neostore.domain.model.LoginRequest
 import com.example.neostore.domain.model.LoginResponse
 import com.example.neostore.domain.model.RegistrationRequest
 import com.example.neostore.domain.model.RegistrationResponse
+import com.example.neostore.domain.model.UserDataResponse
 import com.example.neostore.domain.repository.UserRepository
 import javax.inject.Inject
 
@@ -28,6 +29,10 @@ class UserRepositoryImpl @Inject constructor(
             email = request.email,
             password = request.password
         )
+    }
+
+    override suspend fun getUserData(accessToken: String): UserDataResponse {
+        return apiService.getUserData(access_token = accessToken)
     }
 
 }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.view.UserDataActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mainScreenToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/white">
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpProductsImages"
+            android:layout_width="match_parent"
+            android:layout_height="271dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainScreenToolbar"
+            android:paddingBottom="10dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvTable"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vpProductsImages"
+            android:backgroundTint="@color/yellow"
+            >
+            <TextView
+                android:id="@+id/tvTables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tables"
+                android:textSize="35sp"
+                android:textColor="@color/white"
+                android:paddingTop="20sp"
+                android:paddingLeft="80sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvSofas"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toEndOf="@id/cvTable"
+            app:layout_constraintTop_toBottomOf="@id/vpProductsImages"
+            android:backgroundTint="@color/yellow"
+            >
+            <TextView
+                android:id="@+id/tvSofas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sofas"
+                android:textSize="35sp"
+                android:textColor="@color/white"
+                android:paddingTop="120sp"
+                android:paddingLeft="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvChair"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvTable"
+            android:backgroundTint="@color/yellow"
+            >
+            <TextView
+                android:id="@+id/tvChair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chairs"
+                android:textSize="35sp"
+                android:textColor="@color/white"
+                android:paddingTop="20sp"
+                android:paddingLeft="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvCupboards"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toEndOf="@id/cvChair"
+            app:layout_constraintTop_toBottomOf="@id/cvSofas"
+            android:backgroundTint="@color/yellow"
+            >
+            <TextView
+                android:id="@+id/tvCupboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cupboard"
+                android:textSize="35sp"
+                android:textColor="@color/white"
+                android:paddingTop="120sp"
+                android:paddingLeft="30sp"/>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/menu_items"
+        app:headerLayout="@layout/header_layout"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
