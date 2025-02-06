@@ -10,24 +10,12 @@
         android:label="fragment_user_data"
         tools:layout="@layout/fragment_user_data" >
         <action
-            android:id="@+id/action_userDataFragment_to_productsListFragment"
-            app:destination="@id/productsListFragment" />
-        <action
-            android:id="@+id/action_userDataFragment_to_productsListFragment2"
-            app:destination="@id/productsListFragment" />
+            android:id="@+id/action_userDataFragment_to_tablesFragment"
+            app:destination="@id/tablesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productsListFragment"
-        android:name="com.example.neostore.ProductsListFragment"
-        android:label="fragment_products_list"
-        tools:layout="@layout/fragment_products_list" >
-        <action
-            android:id="@+id/action_productsListFragment_to_singleProductFragment"
-            app:destination="@id/singleProductFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/singleProductFragment"
-        android:name="com.example.neostore.SingleProductFragment"
-        android:label="fragment_single_product"
-        tools:layout="@layout/fragment_single_product" />
+        android:id="@+id/tablesFragment"
+        android:name="com.example.neostore.presentation.view.TablesFragment"
+        android:label="fragment_tables"
+        tools:layout="@layout/fragment_tables" />
 </navigation>

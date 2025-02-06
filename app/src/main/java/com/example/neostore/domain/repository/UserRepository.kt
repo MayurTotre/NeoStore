@@ -12,4 +12,5 @@ interface UserRepository {
     suspend fun loginUser(request: LoginRequest): LoginResponse
 
     suspend fun getUserData(accessToken: String): UserDataResponse
+
 }

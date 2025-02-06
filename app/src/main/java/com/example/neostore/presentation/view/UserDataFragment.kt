@@ -13,8 +13,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neostore.R
 import com.example.neostore.databinding.FragmentUserDataBinding
+import com.example.neostore.domain.model.ProductCategory
+import com.example.neostore.presentation.adapter.CategoriesAdapter
 import com.example.neostore.presentation.adapter.ProductsAdapter
 import com.example.neostore.presentation.viewmodels.RegistrationViewModel
 import com.example.neostore.utils.SharedPreferencesHelper
@@ -38,19 +41,52 @@ class UserDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val loader = CustomLoader(requireContext())
         setupDrawer()
 
         val headerView = binding.navView.getHeaderView(0)
         val tvUserName = headerView.findViewById<TextView>(R.id.userName)
         val mail = headerView.findViewById<TextView>(R.id.tvMail)
 
+        val accessToken = sharedPreferences.getData()
+        Log.d("sharedPref", accessToken.toString())
+
+        viewModel.getUserData(accessToken!!)
+        loader.showLoader()
+
+        viewModel.getUserData.observe(viewLifecycleOwner, Observer { response ->
+            response.let { result ->
+                result.onSuccess { data ->
+                    loader.dismiss()
+                    tvUserName.text = data.data.user_data.username
+                    mail.text = data.data.user_data.email
+                    val image = mutableListOf<String>()
+
+                    val size = data.data.product_categories.size
+                    for (i in 0 until size) {
+                        image.add(data.data.product_categories[i].icon_image)
+                    }
+
+                    val productsAdapter = ProductsAdapter(image)
+                    binding.vpProductsImages.adapter = productsAdapter
+
+                    //val categoryImage = mutableListOf<ProductCategory>()
+
+                    val category = data.data.product_categories
+
+                    binding.rvCategories.layoutManager = GridLayoutManager(requireActivity(), 2)
+                    val adapter = CategoriesAdapter(category)
+                    binding.rvCategories.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        })
     }
 
     private fun setupDrawer() {
         val activity = requireActivity() as AppCompatActivity
         activity.setSupportActionBar(binding.mainScreenToolbar)
 
-        val loader = CustomLoader(requireContext())
 
         toggle = ActionBarDrawerToggle(
             activity,
@@ -64,26 +100,5 @@ class UserDataFragment : Fragment() {
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        val accessToken = sharedPreferences.getData()
-        Log.d("sharedPref", accessToken.toString())
-
-        viewModel.getUserData(accessToken!!)
-        loader.showLoader()
-        viewModel.getUserData.observe(viewLifecycleOwner, Observer { response ->
-            response.let { result ->
-                result.onSuccess { data ->
-                    loader.dismiss()
-                    val image = mutableListOf<String>()
-
-                    val size = data.data.product_categories.size
-                    for (i in 0 until size) {
-                        image.add(data.data.product_categories[i].icon_image)
-                    }
-
-                    val productsAdapter = ProductsAdapter(image)
-                    binding.vpProductsImages.adapter = productsAdapter
-                }
-            }
-        })
     }
 }
