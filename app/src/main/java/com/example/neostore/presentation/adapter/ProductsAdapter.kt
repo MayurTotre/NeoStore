@@ -30,6 +30,8 @@ class ProductsAdapter(private val dataList: List<String>) :
         Glide.with(holder.itemView.context)
             .load(imageUrl)
             .into(holder.productImage)
+
+
     }
 
     override fun getItemCount(): Int = dataList.size

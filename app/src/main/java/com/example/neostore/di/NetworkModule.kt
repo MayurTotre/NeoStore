@@ -1,5 +1,6 @@
 package com.example.neostore.di
 
+import com.example.neostore.data.remote.ProductsApiService
 import com.example.neostore.data.remote.UserApiService
 import dagger.Module
 import dagger.Provides
@@ -41,6 +42,13 @@ object NetworkModule {
     @Singleton
     fun provideUserApiService(retrofit: Retrofit): UserApiService{
         return retrofit.create(UserApiService::class.java)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideProductApiService(retrofit: Retrofit): ProductsApiService{
+        return retrofit.create(ProductsApiService::class.java)
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.neostore.presentation.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,10 +12,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neostore.R
 import com.example.neostore.databinding.FragmentUserDataBinding
-import com.example.neostore.domain.model.ProductCategory
+import com.example.neostore.interfaces.ProductDetails
 import com.example.neostore.presentation.adapter.CategoriesAdapter
 import com.example.neostore.presentation.adapter.ProductsAdapter
 import com.example.neostore.presentation.viewmodels.RegistrationViewModel
@@ -24,12 +25,11 @@ import com.example.neostore.utils.SharedPreferencesHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserDataFragment : Fragment() {
+class UserDataFragment : Fragment(), ProductDetails{
     private lateinit var binding: FragmentUserDataBinding
     private lateinit var toggle: ActionBarDrawerToggle
     val viewModel: RegistrationViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferencesHelper
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,7 +75,8 @@ class UserDataFragment : Fragment() {
                     val category = data.data.product_categories
 
                     binding.rvCategories.layoutManager = GridLayoutManager(requireActivity(), 2)
-                    val adapter = CategoriesAdapter(category)
+                    val adapter = CategoriesAdapter(category, this)
+
                     binding.rvCategories.adapter = adapter
                     adapter.notifyDataSetChanged()
                 }
@@ -99,6 +100,16 @@ class UserDataFragment : Fragment() {
         toggle.drawerArrowDrawable.color = ContextCompat.getColor(requireContext(), R.color.black)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+    }
+
+    override fun onClickGetDetails(id: Int) {
+
+        val bundle = Bundle()
+        bundle.putInt("id", id)
+
+        val navController  = findNavController()
+        navController.navigate(R.id.action_userDataFragment_to_tablesFragment, bundle)
 
     }
 }

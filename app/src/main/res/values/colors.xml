@@ -6,4 +6,6 @@
     <color name="lemon">#FFF455</color>
     <color name="yellow">#FFC700</color>
     <color name="red">#EE4E4E</color>
+    <color name="grey">#696969</color>
+    <color name="darkRed">#ff0000</color>
 </resources>
