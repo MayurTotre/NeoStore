@@ -17,5 +17,14 @@
         android:id="@+id/tablesFragment"
         android:name="com.example.neostore.presentation.view.TablesFragment"
         android:label="fragment_tables"
-        tools:layout="@layout/fragment_tables" />
+        tools:layout="@layout/fragment_tables" >
+        <action
+            android:id="@+id/action_tablesFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.neostore.presentation.view.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" />
 </navigation>

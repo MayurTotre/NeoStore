@@ -1,6 +1,5 @@
 package com.example.neostore.presentation.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.R
 import com.example.neostore.domain.model.ProductCategory
-import com.example.neostore.interfaces.ProductDetails
+import com.example.neostore.interfaces.Products
 
-class CategoriesAdapter(private val categories: List<ProductCategory>, val onClickAction: ProductDetails) :
+class CategoriesAdapter(private val categories: List<ProductCategory>, val onClickAction: Products) :
     RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     class CategoriesViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryCard = itemView.findViewById<CardView>(R.id.cvCategory)

@@ -12,12 +12,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neostore.R
 import com.example.neostore.databinding.FragmentUserDataBinding
-import com.example.neostore.interfaces.ProductDetails
+import com.example.neostore.interfaces.Products
 import com.example.neostore.presentation.adapter.CategoriesAdapter
 import com.example.neostore.presentation.adapter.ProductsAdapter
 import com.example.neostore.presentation.viewmodels.RegistrationViewModel
@@ -25,7 +24,7 @@ import com.example.neostore.utils.SharedPreferencesHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserDataFragment : Fragment(), ProductDetails{
+class UserDataFragment : Fragment(), Products{
     private lateinit var binding: FragmentUserDataBinding
     private lateinit var toggle: ActionBarDrawerToggle
     val viewModel: RegistrationViewModel by viewModels()
@@ -104,7 +103,6 @@ class UserDataFragment : Fragment(), ProductDetails{
     }
 
     override fun onClickGetDetails(id: Int) {
-
         val bundle = Bundle()
         bundle.putInt("id", id)
 

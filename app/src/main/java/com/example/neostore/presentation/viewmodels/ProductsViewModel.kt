@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.neostore.domain.model.ProductDetailsRequest
+import com.example.neostore.domain.model.ProductDetailsResponse
 import com.example.neostore.domain.model.ProductRequest
 import com.example.neostore.domain.model.ProductsResponse
 import com.example.neostore.domain.repository.ProductsRepository
@@ -40,4 +42,24 @@ class ProductsViewModel @Inject constructor(
                     }
             }
         }
+
+    private val _productDetails = MutableLiveData<Result<ProductDetailsResponse>>()
+    val productDetails: LiveData<Result<ProductDetailsResponse>> = _productDetails
+
+    fun getProductDetails(productDetailsRequest: ProductDetailsRequest){
+        viewModelScope.launch {
+            productsUseCase.invokeProductDetails(productDetailsRequest)
+                .onStart {
+                    Log.d("product details", "Started product details API Call")
+                }
+                .catch {exception ->
+                    Log.d("products", "${exception.message}")
+                    _productDetails.postValue(Result.failure(exception))
+                }
+                .collect{ productDetailsResponse ->
+                    Log.d("products", "${productDetailsResponse.toString()}")
+                    _productDetails.postValue(Result.success(productDetailsResponse))
+                }
+        }
+    }
 }

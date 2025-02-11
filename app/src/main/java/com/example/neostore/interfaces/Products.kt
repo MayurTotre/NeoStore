@@ -1,5 +1,5 @@
 package com.example.neostore.interfaces
 
-interface ProductDetails {
+interface Products {
     fun onClickGetDetails(id: Int)
 }
