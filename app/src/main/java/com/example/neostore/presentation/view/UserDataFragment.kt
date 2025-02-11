@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.neostore.R
 import com.example.neostore.databinding.FragmentUserDataBinding
-import com.example.neostore.interfaces.Products
+import com.example.neostore.interfaces.OnClickDoAction
 import com.example.neostore.presentation.adapter.CategoriesAdapter
 import com.example.neostore.presentation.adapter.ProductsAdapter
 import com.example.neostore.presentation.viewmodels.RegistrationViewModel
@@ -24,7 +24,7 @@ import com.example.neostore.utils.SharedPreferencesHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserDataFragment : Fragment(), Products{
+class UserDataFragment : Fragment(), OnClickDoAction{
     private lateinit var binding: FragmentUserDataBinding
     private lateinit var toggle: ActionBarDrawerToggle
     val viewModel: RegistrationViewModel by viewModels()

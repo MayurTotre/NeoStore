@@ -7,14 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.neostore.domain.model.ProductDetailsRequest
 import com.example.neostore.domain.model.ProductDetailsResponse
+import com.example.neostore.domain.model.ProductRatingRequest
+import com.example.neostore.domain.model.ProductRatingResponse
 import com.example.neostore.domain.model.ProductRequest
 import com.example.neostore.domain.model.ProductsResponse
-import com.example.neostore.domain.repository.ProductsRepository
 import com.example.neostore.domain.usecase.ProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -62,4 +61,24 @@ class ProductsViewModel @Inject constructor(
                 }
         }
     }
-}
+
+    private val _setProductRating = MutableLiveData<Result<ProductRatingResponse>>()
+    val setProductRating: LiveData<Result<ProductRatingResponse>> = _setProductRating
+
+    fun setProductRatring(productRatingRequest: ProductRatingRequest){
+        viewModelScope.launch{
+            productsUseCase.invokeProductRating(productRatingRequest)
+                .onStart {
+                    Log.d("product rating", "Started product rating API Call")
+                }
+                .catch {exception ->
+                    Log.d("product rating", "${exception}")
+                    _setProductRating.postValue(Result.failure(exception))
+                }
+                .collect{productRatingResponse ->
+                    Log.d("product rating", "${productRatingResponse.toString()}")
+                    _setProductRating.postValue(Result.success(productRatingResponse))
+                }
+        }
+    }
+    }

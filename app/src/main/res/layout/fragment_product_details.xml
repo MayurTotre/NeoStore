@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -54,10 +55,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5sp"
+                android:paddingTop="10sp"
                 android:text="Table Producer"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+
+            <RatingBar
+                android:id="@+id/ratingProd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progressTint="@color/yellow"
+                android:isIndicator="true"
+                app:layout_constraintStart_toEndOf="@id/tableProducer"
+                app:layout_constraintTop_toBottomOf="@id/tvCategory"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,14 +146,13 @@
 
     <Button
         android:id="@+id/btnBuyNow"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/yellow"
         android:text="BUY NOW"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:paddingLeft="40sp"
-        android:paddingRight="40sp"
+        android:layout_margin="5dp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRate"
@@ -151,14 +161,12 @@
 
     <Button
         android:id="@+id/btnRate"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
         android:text="RATE"
         android:textSize="20sp"
         app:cornerRadius="5dp"
-        android:paddingLeft="40sp"
-        android:paddingRight="40sp"
+        android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.neostore.R
 import com.example.neostore.domain.model.ProductsData
-import com.example.neostore.interfaces.Products
+import com.example.neostore.interfaces.OnClickDoAction
 
-class TablesAdapter(private val productList: List<ProductsData>, val onClickAction: Products): RecyclerView.Adapter<TablesAdapter.TableViewHolder>() {
+class TablesAdapter(private val productList: List<ProductsData>, val onClickAction: OnClickDoAction): RecyclerView.Adapter<TablesAdapter.TableViewHolder>() {
     class TableViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val tableImage = itemView.findViewById<ImageView>(R.id.ivTables)
         var tableHeading = itemView.findViewById<TextView>(R.id.tvTablesHeading)

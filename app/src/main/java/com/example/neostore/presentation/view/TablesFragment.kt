@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.neostore.R
 import com.example.neostore.databinding.FragmentTablesBinding
 import com.example.neostore.domain.model.ProductRequest
-import com.example.neostore.interfaces.Products
+import com.example.neostore.interfaces.OnClickDoAction
 import com.example.neostore.presentation.adapter.TablesAdapter
 import com.example.neostore.presentation.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
-class TablesFragment : Fragment(), Products{
+class TablesFragment : Fragment(), OnClickDoAction{
     private lateinit var binding: FragmentTablesBinding
     private val viewModel: ProductsViewModel by viewModels()
     override fun onCreateView(

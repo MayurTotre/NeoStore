@@ -9,9 +9,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neostore.R
 import com.example.neostore.domain.model.ProductCategory
-import com.example.neostore.interfaces.Products
+import com.example.neostore.interfaces.OnClickDoAction
 
-class CategoriesAdapter(private val categories: List<ProductCategory>, val onClickAction: Products) :
+class CategoriesAdapter(private val categories: List<ProductCategory>, val onClickAction: OnClickDoAction) :
     RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
     class CategoriesViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryCard = itemView.findViewById<CardView>(R.id.cvCategory)

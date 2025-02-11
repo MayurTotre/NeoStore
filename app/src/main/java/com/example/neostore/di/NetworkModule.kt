@@ -1,7 +1,9 @@
 package com.example.neostore.di
 
+import com.example.neostore.data.remote.AddToCartApiService
 import com.example.neostore.data.remote.ProductsApiService
 import com.example.neostore.data.remote.UserApiService
+import com.example.neostore.domain.model.AddToCartResponse
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,5 +50,11 @@ object NetworkModule {
     @Singleton
     fun provideProductApiService(retrofit: Retrofit): ProductsApiService{
         return retrofit.create(ProductsApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddToCartRepository(retrofit: Retrofit): AddToCartApiService{
+        return retrofit.create(AddToCartApiService::class.java)
     }
 }
