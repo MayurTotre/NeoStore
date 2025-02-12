@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_userDataFragment_to_tablesFragment"
             app:destination="@id/tablesFragment" />
+        <action
+            android:id="@+id/action_userDataFragment_to_displayCartItems"
+            app:destination="@id/displayCartItems" />
     </fragment>
     <fragment
         android:id="@+id/tablesFragment"
@@ -27,4 +30,9 @@
         android:name="com.example.neostore.presentation.view.ProductDetailsFragment"
         android:label="fragment_product_details"
         tools:layout="@layout/fragment_product_details" />
+    <fragment
+        android:id="@+id/displayCartItems"
+        android:name="com.example.neostore.presentation.view.DisplayCartItemsFragment"
+        android:label="fragment_display_cart_items"
+        tools:layout="@layout/fragment_display_cart_items" />
 </navigation>

@@ -78,6 +78,8 @@ class UserDataFragment : Fragment(), OnClickDoAction{
 
                     binding.rvCategories.adapter = adapter
                     adapter.notifyDataSetChanged()
+
+
                 }
             }
         })
@@ -99,6 +101,15 @@ class UserDataFragment : Fragment(), OnClickDoAction{
         toggle.drawerArrowDrawable.color = ContextCompat.getColor(requireContext(), R.color.black)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        binding.navView.setNavigationItemSelectedListener { menu ->
+            when(menu.itemId){
+                R.id.myCart ->{
+                    findNavController().navigate(R.id.action_userDataFragment_to_displayCartItems)
+                    true
+                }else -> false
+            }
+        }
 
     }
 
