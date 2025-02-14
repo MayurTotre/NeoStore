@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.view.PlaceOrderFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mainScreenToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:elevation="4dp"
+        app:title="Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/white">
+
+        <ImageButton
+            android:id="@+id/btnAddAddress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_margin="10sp"
+            android:src="@drawable/ic_add_address_foreground"
+            android:background="@android:color/transparent"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainScreenToolbar"
+        app:layout_constraintBottom_toTopOf="@id/btnPlaceOrder"/>
+    
+    <Button
+        android:id="@+id/btnPlaceOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10sp"
+        android:text="PLACE ORDER"
+        app:cornerRadius="10sp"
+        android:textSize="20sp"
+        android:backgroundTint="@color/yellow"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

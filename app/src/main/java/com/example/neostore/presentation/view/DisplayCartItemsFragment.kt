@@ -63,6 +63,10 @@ class DisplayCartItemsFragment : Fragment(), OnClickDoAction, OnClickAddOrRemove
 
         })
 
+        binding.btnOrderNow.setOnClickListener {
+            findNavController().navigate(R.id.action_displayCartItems_to_placeOrderFragment)
+        }
+
     }
 
     override fun onClickGetDetails(id: Int) {

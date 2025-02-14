@@ -1,9 +1,11 @@
 package com.example.neostore.di
 
 import com.example.neostore.data.remote.AddToCartApiService
+import com.example.neostore.data.remote.OrderDetailsApiService
 import com.example.neostore.data.remote.ProductsApiService
 import com.example.neostore.data.remote.UserApiService
 import com.example.neostore.domain.model.AddToCartResponse
+import com.example.neostore.domain.repository.OrderDetailsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -56,5 +59,10 @@ object NetworkModule {
     @Singleton
     fun provideAddToCartRepository(retrofit: Retrofit): AddToCartApiService{
         return retrofit.create(AddToCartApiService::class.java)
+    }
+    @Provides
+    @Singleton
+    fun provideOrderDetailRepository(retrofit: Retrofit): OrderDetailsApiService{
+        return retrofit.create(OrderDetailsApiService::class.java)
     }
 }

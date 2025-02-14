@@ -34,5 +34,31 @@
         android:id="@+id/displayCartItems"
         android:name="com.example.neostore.presentation.view.DisplayCartItemsFragment"
         android:label="fragment_display_cart_items"
-        tools:layout="@layout/fragment_display_cart_items" />
+        tools:layout="@layout/fragment_display_cart_items" >
+        <action
+            android:id="@+id/action_displayCartItems_to_placeOrderFragment"
+            app:destination="@id/placeOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSaveAddress"
+        android:name="com.example.neostore.presentation.view.FragmentSaveAddress"
+        android:label="fragment_save_address"
+        tools:layout="@layout/fragment_save_address" />
+    <fragment
+        android:id="@+id/placeOrderFragment"
+        android:name="com.example.neostore.presentation.view.PlaceOrderFragment"
+        android:label="fragment_place_order"
+        tools:layout="@layout/fragment_place_order" >
+        <action
+            android:id="@+id/action_placeOrderFragment_to_fragmentSaveAddress"
+            app:destination="@id/fragmentSaveAddress" />
+        <action
+            android:id="@+id/action_placeOrderFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.example.neostore.presentation.view.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" />
 </navigation>
